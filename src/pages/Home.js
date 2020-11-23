@@ -31,7 +31,7 @@ function Home() {
       {searched.length ? (
         <Games>
           <div>
-            <h2>Searched Games</h2>
+            <h2>Search Results</h2>
             {searched.map((game) => (
               <Game
                 name={game.name}
