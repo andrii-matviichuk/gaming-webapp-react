@@ -1,10 +1,9 @@
 import { smallerImg } from "../util";
-
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 //Styling and animations
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 //Images
 import playstation4 from "../img/playstation.svg";
@@ -74,9 +73,7 @@ function GameDetail({ pathId }) {
           <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">
-                <motion.h3 layoutId={`title ${pathId}`}>
-                  {gameDetails.name}
-                </motion.h3>
+                <h3>{gameDetails.name}</h3>
                 <p>Rating: {gameDetails.rating}</p>
                 {getStars()}
               </div>
@@ -94,8 +91,7 @@ function GameDetail({ pathId }) {
               </Info>
             </Stats>
             <Media>
-              <motion.img
-                layoutId={`image ${pathId}`}
+              <img
                 src={smallerImg(gameDetails.background_image, 1280)}
                 alt="game"
               />
@@ -128,15 +124,6 @@ const CardShadow = styled(motion.div)`
   top: 0;
   left: 0;
   z-index: 10;
-  &::-webkit-scrollbar {
-    width: 0.5rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #ff7676;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: #fff;
-  }
 `;
 
 const Detail = styled(motion.div)`

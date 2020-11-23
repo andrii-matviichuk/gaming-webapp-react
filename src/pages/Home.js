@@ -21,53 +21,67 @@ function Home() {
   }, [dispatch]);
 
   //Get data from store
-  const { popularGames, upcomingGames, newGames } = useSelector(
+  const { popularGames, upcomingGames, newGames, searched } = useSelector(
     (state) => state.games
   );
 
   return (
     <GameList>
-      <AnimateSharedLayout type="crossfade">
-        <AnimatePresence>
-          {pathId && <GameDetail pathId={pathId} />}
-        </AnimatePresence>
-        <h2>Upcoming Games</h2>
+      {pathId && <GameDetail pathId={pathId} />}
+      {searched.length ? (
         <Games>
-          {upcomingGames.map((game) => (
-            <Game
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              key={game.id}
-            />
-          ))}
+          <div>
+            <h2>Searched Games</h2>
+            {searched.map((game) => (
+              <Game
+                name={game.name}
+                released={game.released}
+                id={game.id}
+                image={game.background_image}
+                key={game.id}
+              />
+            ))}
+          </div>
         </Games>
-        <h2>Popular Games</h2>
-        <Games>
-          {popularGames.map((game) => (
-            <Game
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              key={game.id}
-            />
-          ))}
-        </Games>
-        <h2>New Games</h2>
-        <Games>
-          {newGames.map((game) => (
-            <Game
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              key={game.id}
-            />
-          ))}
-        </Games>
-      </AnimateSharedLayout>
+      ) : (
+        ""
+      )}
+      <h2>Upcoming Games</h2>
+      <Games>
+        {upcomingGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>Popular Games</h2>
+      <Games>
+        {popularGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>New Games</h2>
+      <Games>
+        {newGames.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+            key={game.id}
+          />
+        ))}
+      </Games>
     </GameList>
   );
 }

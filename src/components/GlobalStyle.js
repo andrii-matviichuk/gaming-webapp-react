@@ -7,18 +7,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html {
-    &::-webkit-scrollbar {
-      width: 0.5rem;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: darkgray
-    }
-    &::-webkit-scrollbar-track {
-    background-color: #fff;
-    }
-  }
-
   body {
     font-family: 'Montserrat', sans-serif;
     width: 100%;
@@ -50,6 +38,11 @@ const GlobalStyle = createGlobalStyle`
 
   img {
     display: block;
+  }
+
+  input {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
   }
 `;
 
