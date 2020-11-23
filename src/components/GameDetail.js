@@ -15,6 +15,8 @@ import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
 import nintendo from "../img/nintendo.svg";
 import steam from "../img/steam.svg";
+import starEmpty from "../img/star-empty.png";
+import starFull from "../img/star-full.png";
 
 function GameDetail({ pathId }) {
   const history = useHistory();
@@ -51,6 +53,20 @@ function GameDetail({ pathId }) {
         return gamepad;
     }
   };
+
+  //Get rating stars
+  const getStars = () => {
+    const stars = [];
+    const rating = Math.round(gameDetails.rating);
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<img alt="star" key={i} src={starFull} />);
+      } else {
+        stars.push(<img alt="star" key={i} src={starEmpty} />);
+      }
+    }
+    return stars;
+  };
   return (
     <>
       {!isLoading && (
@@ -62,6 +78,7 @@ function GameDetail({ pathId }) {
                   {gameDetails.name}
                 </motion.h3>
                 <p>Rating: {gameDetails.rating}</p>
+                {getStars()}
               </div>
               <Info>
                 <h3>Platforms</h3>
@@ -139,6 +156,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
 `;
 
 const Info = styled(motion.div)`
@@ -154,7 +176,7 @@ const Platforms = styled(motion.div)`
 `;
 
 const Media = styled(motion.div)`
-  margin-top: 5rem;
+  margin-top: 2rem;
   img {
     width: 100%;
   }
