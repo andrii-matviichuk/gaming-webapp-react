@@ -1,9 +1,11 @@
 import { smallerImg } from "../util";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 //Styling and animations
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { fadeIn } from "../animations";
 
 //Images
 import playstation4 from "../img/playstation.svg";
@@ -69,7 +71,13 @@ function GameDetail({ pathId }) {
   return (
     <>
       {!isLoading && (
-        <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <CardShadow
+          className="shadow"
+          onClick={exitDetailHandler}
+          variants={fadeIn}
+          initial="hidden"
+          animate="show"
+        >
           <Detail layoutId={pathId}>
             <Stats>
               <div className="rating">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import logo from "../img/logo.svg";
+import { fadeIn } from "../animations";
 
 //Redux & Route
 import { fetchSearch } from "../actions/gamesAction";
@@ -26,10 +27,10 @@ function Nav() {
     dispatch({ type: "CLEAR_SEARCHED" });
   };
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <StyledLogo onClick={clearSearched}>
         <img src={logo} alt="logo" />
-        <h1>VANYA KRUTOOI</h1>
+        <h1>Gaming Website</h1>
       </StyledLogo>
       <form className="search">
         <input value={textInput} onChange={inputHandler} type="text"></input>

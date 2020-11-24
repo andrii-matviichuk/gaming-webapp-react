@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 
 //Styling and animations
 import styled from "styled-components";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
+import { fadeIn } from "../animations";
 
 //Components
 import Game from "../components/Game";
@@ -26,7 +27,7 @@ function Home() {
   );
 
   return (
-    <GameList>
+    <GameList variants={fadeIn} initial="hidden" animate="show">
       {pathId && <GameDetail pathId={pathId} />}
       {searched.length ? (
         <Games>

@@ -3,6 +3,7 @@ import { smallerImg } from "../util";
 //Styling and animations
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { popUp } from "../animations";
 
 //Redux
 import { useDispatch } from "react-redux";
@@ -15,7 +16,12 @@ function Game({ id, name, released, image }) {
     document.body.style.overflow = "hidden";
   };
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame
+      variants={popUp}
+      initial="hidden"
+      animate="show"
+      onClick={loadDetailHandler}
+    >
       <Link to={`/game/${id}`}>
         <h3>{name}</h3>
         <p>{released}</p>
