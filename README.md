@@ -1,4 +1,4 @@
-# Web App For Gamers
+# Web App For Searching Games
 
 Web App build with React / Redux for searching games based on RAWG API.
 
